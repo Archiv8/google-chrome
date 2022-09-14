@@ -5,9 +5,9 @@
 # repository root directory, see https://github.com/koalaman/shellcheck/wiki
 # and https://archiv8.github.io for further information.
 # shellcheck disable=SC2034,SC2154
-# ToDo: Add files: User documentation
-# ToDo: Add files: Tooling
-# FixMe: Namcap warnings and errors
+# [ToDo]: Add files: User documentation
+# [ToDo]: Add files: Tooling
+# [FixMe]: Namcap warnings and errors
 
 # Maintainer: Ross Clark <https://github.com/Archiv8/google-chrome/discussions>
 # Contributor: Ross Clark <https://github.com/Archiv8/google-chrome/discussions>
@@ -16,7 +16,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" "/pkgid/{ sub(".*-","",$4); print $4": "$10 }"
 
 pkgname=google-chrome
-pkgver=105.0.5195.52
+pkgver=105.0.5195.125
 pkgrel=1
 pkgdesc="A web browser by Google, stable)"
 arch=("x86_64")
@@ -49,7 +49,7 @@ source=(
   "google-chrome-$_channel.sh"
 )
 sha512sums=(
-  "6ae52004f53aa93262b16eb3585cbd664e7c9fd9b97381204181732d9b9c7d874430658e48e33ecd21c90da51332ac5d9ce35302bdc8ca8554a349313944c222"
+  "80e4ed357e9a117e00f0a4d2531369990ad6ea542a65c21808ebb6f31bca7fda801c02a300c3afc8df12f97c424167f50a8520e5792759eb670e7b0041358cc1"
   "c733a940fd26329f5b68a55f7470eef1e0ea25e7d87e238082c397370cbfd5fe585b385c51d33f76fb60b702f1a0f4badfe49dfc72b9ef60dd4459b7c858e516"
   "05183afeb38436b76c577b6dca03b4b7a357e7de890c076ce0110e0a126436887872935e266b07385f71e39879a350b87fe86cccadd70e298c78ae22b2088aca"
 )
