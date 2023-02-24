@@ -1,45 +1,22 @@
-#!/bin/bash
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
 
-# Disable various shellcheck rules that produce false positives in this file.
-# Repository rules should be added to the .shellcheckrc file located in the
-# repository root directory, see https://github.com/koalaman/shellcheck/wiki
-# and https://archiv8.github.io for further information.
-# shellcheck disable=SC2034,SC2154
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
 
-# Maintainer: Ross Clark <archiv8@artisteducator.com>
-# Contributor: Ross Clark <archiv8@artisteducator.com>
-set -euxo pipefail
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
 
-# Get channel
-CHANNEL=$(awk -F '=' '/^_channel/{ print $2 }' PKGBUILD)
-PKG="google-chrome-${CHANNEL}"
+post_install() {
+    note "Custom flags should be put directly in: ~/.config/chrome-flags.conf"
+    note "The launcher is called: 'google-chrome-stable'"
+}
 
-# Get latest version
-VER=$(curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages |
-	grep -A1 "Package: ${PKG}" |
-	awk '/Version/{print $2}' |
-	cut -d '-' -f1)
-
-# Insert latest version into PKGBUILD and update hashes
-sed -i \
-	-e "s/^pkgver=.*/pkgver=${VER}/" \
-	PKGBUILD
-
-# Check whether this changed anything
-if (git diff --exit-code PKGBUILD); then
-	echo "Package ${PKG} has most recent version ${VER}"
-	exit 0
-fi
-
-sed -i \
-	-e 's/pkgrel=.*/pkgrel=1/' \
-	PKGBUILD
-
-updpkgsums
-
-# Update .SRCINFO
-makepkg --printsrcinfo >.SRCINFO
-
-# Commit changes
-git add PKGBUILD .SRCINFO
-git commit -m "${PKG} v${VER}"
+post_upgrade() {
+    post_install
+}

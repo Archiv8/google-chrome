@@ -4,8 +4,8 @@
   <head>
 
     <script>
-      var a = location.href.match( /platform=(win8|win|mac|linux|cros|ios)/ ), b = window.navigator.userAgent; document.documentElement.id = a && a[1] || ( -1 < b.indexOf( "Windows NT 6.2" ) ? "win8" : -1 < b.indexOf( "iPad" ) ? "ios" : -1 < b.indexOf( "Windows" ) ? "win" : -1 < b.indexOf( "Mac" ) ? "mac" : -1 < b.indexOf( "CrOS" ) ? "cros" : "linux" )
-      if ( -1 < b.indexOf( "MSIE" ) ) { var c = -1 < b.indexOf( "MSIE 6" ) ? " lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" : -1 < b.indexOf( "MSIE 7" ) ? " lt-ie10 lt-ie9 lt-ie8 ie7" : -1 < b.indexOf( "MSIE 8" ) ? " lt-ie10 lt-ie9 ie8" : -1 < b.indexOf( "MSIE 9" ) ? " lt-ie10 ie9" : -1 < b.indexOf( "MSIE 10" ) ? " ie10" : ""; "" !== c && ( document.documentElement.className += c ) } if ( -1 < b.indexOf( "Windows NT 5.1" ) || -1 < b.indexOf( "Windows NT 5.2" ) ) document.documentElement.className += " winXP";
+      var a = location.href.match(/platform=(win8|win|mac|linux|cros|ios)/), b = window.navigator.userAgent; document.documentElement.id = a && a[1] || (-1 < b.indexOf("Windows NT 6.2") ? "win8" : -1 < b.indexOf("iPad") ? "ios" : -1 < b.indexOf("Windows") ? "win" : -1 < b.indexOf("Mac") ? "mac" : -1 < b.indexOf("CrOS") ? "cros" : "linux");
+      if (-1 < b.indexOf("MSIE")) { var c = -1 < b.indexOf("MSIE 6") ? " lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" : -1 < b.indexOf("MSIE 7") ? " lt-ie10 lt-ie9 lt-ie8 ie7" : -1 < b.indexOf("MSIE 8") ? " lt-ie10 lt-ie9 ie8" : -1 < b.indexOf("MSIE 9") ? " lt-ie10 ie9" : -1 < b.indexOf("MSIE 10") ? " ie10" : ""; "" !== c && (document.documentElement.className += c) } if (-1 < b.indexOf("Windows NT 5.1") || -1 < b.indexOf("Windows NT 5.2")) document.documentElement.className += " winXP";
     </script>
     <script src="//www.gstatic.com/external_hosted/modernizr/modernizr.js">
     </script>
@@ -28,9 +28,9 @@
     <script src="//www.google.com/js/gweb/analytics/autotrack.js">
     </script>
     <script>
-      new gweb.analytics.AutoTrack( {
+      new gweb.analytics.AutoTrack({
         profile: 'UA-26908291-1'
-      } );
+      });
     </script>
   </head>
 

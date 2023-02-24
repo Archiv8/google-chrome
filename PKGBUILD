@@ -4,10 +4,10 @@
 # Repository rules should be added to the .shellcheckrc file located in the
 # repository root directory, see https://github.com/koalaman/shellcheck/wiki
 # and https://archiv8.github.io for further information.
-# shellcheck disable=SC2034,SC2154
-# [ToDo]: Add files: User documentation
-# [ToDo]: Add files: Tooling
-# [FixMe]: Namcap warnings and errors
+#
+# @ToDo Add files: User documentation
+# @ToDo Add files: Tooling
+# @FixMe Namcap warnings and errors
 
 # Maintainer: Ross Clark <https://github.com/Archiv8/google-chrome/discussions>
 # Contributor: Ross Clark <https://github.com/Archiv8/google-chrome/discussions>
@@ -15,8 +15,10 @@
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Stable%20updates
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" "/pkgid/{ sub(".*-","",$4); print $4": "$10 }"
 
+_channel=stable
+
 pkgname=google-chrome
-pkgver=105.0.5195.125
+pkgver=110.0.5481.177-1
 pkgrel=1
 pkgdesc="A web browser by Google, stable)"
 arch=("x86_64")
@@ -42,11 +44,10 @@ options=(
   "!emptydirs"
   "!strip")
 install=$pkgname.install
-_channel=stable
 source=(
   "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
   "eula_text.html"
-  "google-chrome-$_channel.sh"
+  "google-chrome-${_channel}.sh"
 )
 sha512sums=(
   "80e4ed357e9a117e00f0a4d2531369990ad6ea542a65c21808ebb6f31bca7fda801c02a300c3afc8df12f97c424167f50a8520e5792759eb670e7b0041358cc1"
